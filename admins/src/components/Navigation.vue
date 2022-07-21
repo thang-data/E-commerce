@@ -6,7 +6,7 @@
           >Data-Blog</router-link
         >
         <div class="nav-links">
-          <ul>
+          <ul v-show="!mobile">
             <router-link class="link" to="#">Home</router-link>
             <router-link class="link" to="#">Blog</router-link>
             <router-link class="link" to="#">Create Post</router-link>
@@ -15,9 +15,14 @@
         </div>
       </div>
     </nav>
-    <menuIcon />
+    <img
+      @click="toggleMobileNav"
+      class="menu-icon"
+      :src="require('../assets/Icons/bars-regular.svg')"
+      v-show="mobile"
+    />
     <transition name="mobile-nav">
-      <ul>
+      <ul class="mobile-nav" v-show="mobileNav">
         <router-link class="link" to="#">Home</router-link>
         <router-link class="link" to="#">Blog</router-link>
         <router-link class="link" to="#">Create Post</router-link>
@@ -28,12 +33,35 @@
 </template>
 
 <script>
-import { menuIcon } from "../assets/Icons/bars-regular.svg"
-
 export default {
   name: "navigation",
-  components: {
-    menuIcon,
+  components: {},
+  data() {
+    return {
+      mobile: null,
+      mobileNav: null,
+      windowWidth: null,
+    }
+  },
+  create() {
+    window.addEventListerner("resize", this.checkScreen)
+    this.checkScreen
+  },
+  methods: {
+    checkScreen() {
+      this.windowWidth = window.innerWidth
+      if (this.windowWidth <= 750) {
+        this.mobile = true
+        return
+      }
+      this.mobile = false
+      this.mobileNav = false
+      return
+    },
+
+    toggleMobileNav() {
+      this.mobileNav = !this.mobileNav
+    },
   },
 }
 </script>
@@ -63,6 +91,8 @@ header {
     .branding {
       display: flex;
       align-items: center;
+      flex: 1;
+      justify-content: space-between;
 
       .header {
         font-weight: 600;
@@ -70,6 +100,49 @@ header {
         color: #000;
         text-decoration: none;
       }
+    }
+
+    .nav-links {
+      justify-content: space-between;
+      flex-direction: row;
+      align-items: center;
+      ul {
+        margin-right: 32px;
+
+        .link {
+          margin-right: 32px;
+        }
+        .link:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  .menu-icon {
+    cursor: pointer;
+    position: absolute;
+    top: 32px;
+    right: 25px;
+    height: 25px;
+    width: auto;
+  }
+
+  .mobile-nav {
+    padding: 20px;
+    width: 70%;
+    max-width: 250px;
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    height: 100%;
+    background-color: #303030;
+    top: 0;
+    left: 0;
+
+    .link {
+      padding: 15px 0;
+      color: #fff;
     }
   }
 }
