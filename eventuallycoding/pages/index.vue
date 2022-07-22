@@ -14,16 +14,16 @@
 
             <div class="p-3 text-white rounded ">
               <div class="md:block flex justify-center items-center">
-                <nuxt-img
-                  src="../assets/author.png"
+                <img
+                  src="~/assets/author.png"
                   loading="lazy"
                   alt="me"
                   class="shadow-xl md:h-60 md:w-60 h-40 w-40 rounded-full hover:shadow-amber-700 hover:-translate-y-1 hover:shadow-2xl transition-all"
                 />
               </div>
-              <div class="text-center">
+              <!-- <div class="text-center">
                 {{ siteMetaInfo.author }}
-              </div>
+              </div> -->
 
             </div>
           </div>
@@ -44,7 +44,7 @@
 
             <div class="pt-4 grid lg:grid-cols-3 gap-x-8 md:grid-cols-2 sm:grid-cols-1 items-stretch m-3">
 
-              <BlogCard
+              <!-- <BlogCard
                         v-for="article in articles"
                         :key="article.title"
                         :title="article.title"
@@ -54,9 +54,9 @@
                         :slug="article.slug"
                         :tags="article.tags"
                         :path="article.path"
-              />
+              /> -->
 
-              <div class="text-center mt-16 lg:hidden block">
+              <!-- <div class="text-center mt-16 lg:hidden block">
                 <nuxt-link class="relative inline-block group focus:outline-none focus:ring" to="/blog">
                   <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-pink-300 group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
@@ -64,10 +64,10 @@
                     En lire plus
                   </span>
                 </nuxt-link>
-              </div>
+              </div> -->
             </div>
 
-            <div class="text-center mt-10 lg:block hidden">
+            <!-- <div class="text-center mt-10 lg:block hidden">
               <nuxt-link class="relative inline-block group focus:outline-none focus:ring" to="/blog">
                 <span class="absolute inset-0 transition-transform translate-x-1.5 translate-y-1.5 bg-pink-300 group-hover:translate-y-0 group-hover:translate-x-0"></span>
 
@@ -75,7 +75,7 @@
                     read more
                 </span>
               </nuxt-link>
-            </div>
+            </div> -->
 
 
           </section>
@@ -86,7 +86,7 @@
 
           <hr class="mt-20 lg:w-3/4 w-full mx-auto">
 
-          <div class="mt-20 lg:w-3/4 w-full mx-auto lg:px-4 px-0 mb-10">
+          <!-- <div class="mt-20 lg:w-3/4 w-full mx-auto lg:px-4 px-0 mb-10">
             <div class="mb-16 ">
               <h2 class="font-montserrat font-medium text-4xl mb-10 text-slate-800 mt-20">Evènements passés</h2>
             </div>
@@ -117,7 +117,7 @@
             </div>
 
 
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

@@ -1,69 +1,42 @@
 ---
-title: "Ressources"
-img: ""
+title: "Project"
+img: "/eventuallycoding/assets/author.png"
 cover: "cover1.jpg"
 ---
+### Hi, I'm Thang Nguyen Duc - aka [Data-JS][website] = Software Engineer + Youtuber 🌱 
 
-Voici une liste de resources assez variées que j'utilise fréquement ou qui m'ont influencé.
+- 🔭 I'm passionate about Machine Learning,Data Engineering and Software Engineer
+- 🥅 Favorite quote: Nothing is impossible without determination.
+- ⚡Fun fact: I love horror because bugs aren't enough to scare 😅
 
-## Livres
+### ⚡ GitHub Stats
+<table>
+<tr>
+  <td width="48%">
+    <img src="https://github-readme-stats.vercel.app/api?username=thang-data&show_icons=true&hide=contribs,issues&hide_border=true" />
+    <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=thang-data&layout=compact&show_icons=true&hide_border=true" />
+  </td>
+  <td width="50%"><img alt="gif" align="right" src="/eventuallycoding/static/coding.gif"/></td>
+</tr>
+<table>
+### Languages and Tools:
+<br />
+<img align="left" alt="Visual Studio Code" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/visual-studio-code/visual-studio-code.png" />
+<img align="left" alt="HTML5" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/html/html.png" />
+<img align="left" alt="CSS3" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/css/css.png" />
+<img align="left" alt="Sass" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sass/sass.png" />
+<img align="left" alt="JavaScript" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/javascript/javascript.png" />
+<img align="left" alt="React" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/react/react.png" />
+<img align="left" alt="GraphQL" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/graphql/graphql.png" />
+<img align="left" alt="Node.js" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/nodejs/nodejs.png" />
+<img align="left" alt="Deno" width="26px" src="https://raw.githubusercontent.com/github/explore/361e2821e2dea67711cde99c9c40ed357061cf27/topics/deno/deno.png" />
+<img align="left" alt="SQL" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/sql/sql.png" />
+<img align="left" alt="MongoDB" width="26px" src="https://raw.githubusercontent.com/github/explore/80688e429a7d4ef2fca1e82350fe8e3517d3494d/topics/mongodb/mongodb.png" />
 
-| Titre                                                                                                                 | Auteur                                |
-|-----------------------------------------------------------------------------------------------------------------------|---------------------------------------|
-| [Continuous Delivery](https://www.amazon.fr/Continuous-Delivery-Reliable-Deployment-Automation/dp/0321601912)         | Jez Humble, David Farley              |
-| [Inspired](https://www.amazon.fr/Inspired-Create-Tech-Products-Customers/dp/1119387507)                               | Marty Cagan                           |
-| [Lean Management](https://www.eyrolles.com/Entreprise/Livre/lean-management-9782212546385/)                           | Pierre Pezziardi                      |
-| [L'obsession du service client](https://www.amazon.fr/Lobsession-service-client-start-up-lexp%C3%A9rience/dp/2100784927) | Jonathan Lefèvre               |
-| [Empowered](https://www.amazon.fr/Empowered-Ordinary-People-Extraordinary-Products/dp/111969129X)                     | Marty Cagan                           |
-| [Measure what matters](https://www.amazon.fr/Measure-What-Matters-Google-Foundation/dp/0525536221)                    | John Doerr                            |
-| [No Rules Rules](https://www.amazon.fr/No-Rules-Netflix-Culture-Reinvention/dp/0753553635)                            | 	Red Hastings, Erin Meyer             |
-| [Pragmatic Programmer](https://www.amazon.fr/Pragmatic-Programmer-Journeyman-Master-ebook/dp/B003GCTQAE)              | Hunt Andrew, Thomas David             | 
-| [Reinventing Organizations](https://livre.fnac.com/a8843377/Frederic-Laloux-Reinventing-organizations)                | Frédérix Laloux                       |
-| [Rework](https://www.amazon.fr/Rework-Jason-Fried/dp/0307463745)                                                      | Jason Fried, David Heinemeier Hansson |
-| [The future of Management](https://www.amazon.fr/The-Future-of-Management-Business-Leadership/dp/0307463745)          | Gary Hamel                            |
-| [The 5 dysfunctions of a team](https://www.amazon.fr/Five-Dysfunctions-Team-Leadership-Fable/dp/0787960756)           | Patrick M Lencioni                    |
-| [The manager's Path](https://www.amazon.fr/The-Managers-Path-Business-Leadership/dp/0307463745)                       | Camille Fournier                      |
-| [Turn the ship around](https://www.amazon.fr/Turn-Ship-Around-Building-Breaking/dp/0241250943)                        | David Marquet                         |
+<br />
+<br />
 
-## Mailing Lists
+---
+### 🛠 &nbsp;Contact me
+![Skype](https://img.shields.io/badge/<https://join.skype.com/invite/xLKpODeYl6Ec>-%2300AFF0.svg?style=for-the-badge&logo=Skype&logoColor=white)
 
-| Titre                                                          | Thème(s)               |
-|----------------------------------------------------------------|------------------------|
-| [Codrops](https://tympanus.net/codrops/newsletter/)            | Web Design & Front-End |
-| [Devops Weekly](https://www.devopsweekly.com/)                 | Devops                 |
-| [Guriosity](https://guriosity.com/)                            | Blog d'équipes tech    |
-| [Javascript Weekly](https://javascriptweekly.com/)           | Javascript             |
-| [Silicon Valley Product Group](https://www.svpg.com/articles/) | Product                |
-
-## Slacks de communautés
-
-| Titre                                                                            | Thème(s)                 |
-|----------------------------------------------------------------------------------|--------------------------|
-| [Tech Rocks](https://www.tech.rocks/)                                            | Tech leaders             |
-| [Rands Leadership](https://randsinrepose.com/welcome-to-rands-leadership-slack/) | Tech leaders             |
-| [Mind The product](https://www.mindtheproduct.com/)                              | Product                  |
-| [Lyon Tech Hub](https://www.lyontechhub.org/#!/a-propos)                                   | Communautés Tech de Lyon |
-
-
-## Articles, blogs & Vidéos 
-
-
-| Titre                                                                                             | Thème(s)                                      |
-|---------------------------------------------------------------------------------------------------|-----------------------------------------------|
-| [Agile Product Manifesto](https://d-pereira.com/the-agile-product-manifesto-is-born)  | Product                                       |
-| [Aphyr/jepsen](https://aphyr.com/)                                                                | Connu pour ces benchmarks de bases de données |
-| [Devoxx - C'est moi le chef ! (Nicolas Helleringer)](https://www.youtube.com/watch?v=vWARXoZrx10) | Engineering manager                           |
-| [Engineering Ladders](http://www.engineeringladders.com/)                                         | Tech leaders & Career Path                    |
-| [Martin Fowler.com](https://martinfowler.com/)                                                    | Architecture                                  |
-| [Staff Eng](https://staffeng.com/)                                                                | Tech leaders                                  |
-| [The Engineer Manager Pendulum](https://charity.wtf/2017/05/11/the-engineer-manager-pendulum/)    | Osciller entre management et tech             |
-
-
-## Extensions navigateurs favorites
-
-| Nom                                                                                                                  | Description                                                                  |
-|----------------------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------|
-| [Wappalyzer](https://chrome.google.com/webstore/detail/wappalyzer-technology-pro/gppongmhjkpfnbhagpmjfkannfbllamg)   | Trouver la stack technique d'un site visité                                  |
-| [Elasticvue](https://chrome.google.com/webstore/detail/elasticvue/hkedbapjpblbodpgbajblpnlpenaebaa)                  | Interface pour Elasticsearch                                                 |
-| [JSonvue](https://chrome.google.com/webstore/detail/jsonvue/chklaanhfefbnpoihckbnefhakgolnmc)                        | Json prettify                                                                |
-| [Tab Grp ext](https://chrome.google.com/webstore/detail/tab-groups-extension/nplimhmoanghlebhdiboeellhgmgommi) | Permet de grouper les onglets, les sauvegarder et garder un navigateur léger |

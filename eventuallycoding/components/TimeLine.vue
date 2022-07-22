@@ -3,7 +3,7 @@
   <div class="mt-24">
 
     <div class="mb-16 mt-20 w-5/6 lg:w-3/4 md:w-4/5 mx-auto px-4">
-      <h2 class="font-montserrat font-medium text-4xl mb-10 text-slate-800 mt-20">Parcours</h2>
+      <h2 class="font-montserrat font-medium text-4xl mb-10 text-slate-800 mt-20">History</h2>
     </div>
 
 

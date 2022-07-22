@@ -17,7 +17,7 @@
         {{ article.title }}
       </h1>
       <div class="flex items-center font-medium mt-6 sm:mx-3 justify-center">
-        <nuxt-img
+        <img
           :src="siteMetadata.author_image"
           loading="lazy"
           alt=""
@@ -65,7 +65,7 @@ export default {
 
   async asyncData({$content}) {
     const article = await $content("resources")
-      .where({ title: 'Ressources' })
+      .where({ title: 'Project' })
       .fetch();
     return {
       article: article[0],
@@ -73,7 +73,7 @@ export default {
   },
   head() {
     return {
-    title: "Ressources | " + siteMetaInfo.title,
+    title: "Project | " + siteMetaInfo.title,
     meta: [
       {
         hid: "description",

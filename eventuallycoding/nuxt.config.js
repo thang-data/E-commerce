@@ -30,8 +30,8 @@ export default {
       { hid: "og:url", name: "og:url", content: "https://nguyenducthang.name.vn/" },
       { name: "og:site_name", content: "Data-JS" },
       { name: "og:locale", content: "VN" },
-      { name: "twitter:creator", content: "@nguyenducthang" },
-      { name: "twitter:site", content: "@nguyenducthang" },
+      { name: "twitter:creator", content: "@thangnd77" },
+      { name: "twitter:site", content: "@thangnd77" },
    ],
     link: [
       { rel: "alternate", type: "application/rss+xml", href: "https://nguyenducthang.name.vn/feed/" },

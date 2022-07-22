@@ -15,13 +15,13 @@
       <aside class="hidden px-6 py-6 space-y-8 sm:block w-[200px]" aria-label="Sidebar">
         <div class="">
 
-          <div v-if="currentTag">
+          <!-- <div v-if="currentTag">
             <h3 class="text-lg font-medium text-gray-700">
               Filter:
             </h3>
-          </div>
+          </div> -->
 
-          <a v-if="currentTag" @click.prevent="currentTag=''"
+          <!-- <a v-if="currentTag" @click.prevent="currentTag=''"
              class="inline-flex items-center mt-8 mb-8 flex px-3 py-1 text-left text-slate-600 flex items-stretch text-sm transition duration-150 ease-out border border-gray-700 outline-none group lg:hover:border-gray-400"
              href="#">
             <span class="text-sm font-medium">
@@ -33,16 +33,16 @@
               <path stroke-linecap="round" stroke-linejoin="round"
                     d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"/>
             </svg>
-          </a>
+          </a> -->
 
 
-          <div>
+          <!-- <div>
             <h3 class="text-lg font-medium text-gray-700">
               Tags :
             </h3>
-          </div>
+          </div> -->
           <div class="w-full">
-            <div class="flex flex-wrap -mx-2">
+            <!-- <div class="flex flex-wrap -mx-2">
 
               <a :href="'/blog?tag='+tag" v-for="tag in allTags" :key="tag" @click.prevent="currentTag=tag">
                 <div class="px-1 mt-2">
@@ -55,7 +55,7 @@
                 </div>
               </a>
 
-            </div>
+            </div> -->
           </div>
         </div>
       </aside>
@@ -66,8 +66,8 @@
         </div>
         <div class="pt-16 grid xl:grid-cols-5 lg:grid-cols-3 gap-x-3 md:grid-cols-2 sm:grid-cols-1 items-stretch m-3">
 
-          <BlogCard @changeCurrentTag="(tag) => currentTag = tag"
-                    v-for="article in articles"
+          <!-- <BlogCard @changeCurrentTag="(tag) => currentTag = tag"
+                    v-for="article in 0"
                     :currentTag="currentTag"
                     :key="article.title"
                     :title="article.title"
@@ -77,7 +77,8 @@
                     :slug="article.slug"
                     :tags="article.tags"
                     :path="article.path"
-          />
+          /> -->
+          Unfortunately, I couldn't finish the first one.
         </div>
       </div>
     </div>

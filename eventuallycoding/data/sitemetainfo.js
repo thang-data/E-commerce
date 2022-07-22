@@ -15,10 +15,10 @@ const siteMetaInfo = {
   github: "https://github.com/thang-data",
   githubUser: "thang-data",
   twitter: "https://twitter.com/",
-  twitter_user: "nguyenducthang",
+  twitter_user: "@thangnd77",
   stackoverflow: "#",
   youtube: "#",
-  linkedin: "https://www.linkedin.com/in/nguyenducthang/",
+  linkedin: "https://www.linkedin.com/in/nguy%E1%BB%85n-%C4%91%E1%BB%A9c-th%E1%BA%AFng-58215220b",
   rss: "/rss.xml",
 };
 
