@@ -1,0 +1,15 @@
+@import 'mixins.sass'
+@import 'variable.sass'
+@import 'reset.sass'
+@import 'commons.sass'
+@import 'datepicker.scss'
+
+@each $mr in $ms
+  @each $dn, $dv in $ds
+    .m#{$dn}-#{$mr}
+      margin-#{$dv}: $mr + px
+
+@each $pr in $ps
+  @each $dn, $dv in $ds
+    .p#{$dn}-#{$pr}
+      padding-#{$dv}: $pr + px
