@@ -28,10 +28,6 @@ func Init() *echo.Echo {
 		Level: 5,
 	}))
 
-	//e.GET("/", handler.Health)
-	//e.GET("/health", handler.Health)
-	//e.GET("/hello", handler.Hello)
-	//e.GET("/hello-session", handler.Hello, api_pkg.Session)
 	if config.GetConfig().ApiMode {
 		e.POST("/admin/signup-by-email-password", handler.SignupAdminByEmailPassword)
 		e.POST("/admin/signup-information", handler.SignupInformation)
