@@ -9,13 +9,13 @@ import (
 func SignupAdminByEmailPassword(c echo.Context) error {
 	email := c.FormValue("email")
 	lastName := c.FormValue("lastName")
-	firsName := c.FormValue("firsName")
-	err := usecase.SignupAdminByEmailPassword(email, lastName, firsName)
+	firstName := c.FormValue("firstName")
+	profile, err := usecase.SignupAdminByEmailPassword(email, lastName, firstName)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	return c.NoContent(http.StatusOK)
+	return c.JSON(http.StatusOK, profile)
 }
 
 func SignupInformation(c echo.Context) error {
@@ -23,12 +23,12 @@ func SignupInformation(c echo.Context) error {
 	password := c.FormValue("password")
 	repeatPassword := c.FormValue("repeatPassword")
 
-	err := usecase.SignupInformation(email, password, repeatPassword)
+	admin, err := usecase.SignupInformation(email, password, repeatPassword)
 	if err != nil {
 		return echo.NewHTTPError(http.StatusBadRequest, err.Error())
 	}
 
-	return c.NoContent(http.StatusOK)
+	return c.JSON(http.StatusOK, admin)
 }
 
 func LoginAdminByEmailPassword(c echo.Context) error {

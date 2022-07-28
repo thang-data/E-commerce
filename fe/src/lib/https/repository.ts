@@ -1,6 +1,13 @@
-import { AxiosInstance } from "axios";
-import axiosInstance from "./setting";
+import type { AxiosInstance } from "axios"
+import type { Router } from "vue-router"
+import axiosInstance from "./setting"
 
 export default class Repository {
-  axios: AxiosInstance = axiosInstance;
+  router: Router | null = null
+  axios: AxiosInstance = axiosInstance
+
+  withRouter(router: Router) {
+    this.router = router
+    return this
+  }
 }

@@ -1,23 +1,43 @@
 <template>
   <div class="form-container sign-up-container">
-    <form action="#">
+    <form>
       <h1 class="mb-30">Create Account</h1>
       <span>or use your email for registration</span>
-      <input type="email" placeholder="Email" />
-      <input type="password" placeholder="Password" />
-      <input type="password" placeholder="Repeat Password" />
-      <button>Sign Up</button>
+      <input v-model="email" type="email" placeholder="Email" />
+      <input v-model="password" type="password" placeholder="Password" />
+      <input v-model="reapeatPassword" type="password" placeholder="Repeat Password" />
+      <button @click="submit" class="signup mt-10">Sign Up</button>
+      <a class="signupMB" href="/signup-member">Have you registered as a member yet?</a>
     </form>
   </div>
   <ContainerView :signUp="true" />
 </template>
-<script lang="ts">
+<script lang="ts" setup>
+import { AuthRepository, RepositoryFactory } from "@/lib/https";
+import { ref } from "vue";
+import { useRouter } from "vue-router";
 import ContainerView from "../components/containerView.vue";
 
-export default {
-  name: "SignupView",
-  components: { ContainerView },
-};
+const email = ref("")
+const password = ref("")
+const reapeatPassword = ref("")
+
+const {  signUp } = RepositoryFactory.getRepository<AuthRepository>(AuthRepository).withRouter(useRouter())
+const router = useRouter()
+async function submit() {
+
+  const formData = new FormData()
+  formData.append("email", email.value)
+  formData.append("password", password.value)
+  formData.append("reapeatPassword", reapeatPassword.value)
+  try {
+    const reponse = await signUp(formData)
+    console.log(reponse)
+	  router.push({name: 'login'})
+  } catch (errors: any) {
+	return
+  }
+}
 </script>
 <style lang="scss" scoped>
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,800");
@@ -107,5 +127,13 @@ button:focus {
 button.ghost {
   background-color: transparent;
   border-color: #ffffff;
+}
+
+.signup{
+  margin-top: 10px;
+}
+.signupMB{
+  margin-top: 10px;
+  font-size: 12px;
 }
 </style>

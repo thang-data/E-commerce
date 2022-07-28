@@ -25,65 +25,67 @@ func validatePassword(password string, repeatPassword string) error {
 
 	return nil
 }
-func SignupAdminByEmailPassword(email string, lastName string, firsName string) error {
+func SignupAdminByEmailPassword(email string, lastName string, firstName string) (*entity.AdminInvitation, error) {
 	// trim data before validation
 	email = strings.TrimSpace(email)
 	_, err := mail.ParseAddress(email)
 	if err != nil {
-		return pkg.NewError(fmt.Sprintf(pkg.MsgErrInvalid, "Error"), "email")
+		return nil, pkg.NewError(fmt.Sprintf(pkg.MsgErrInvalid, "Error"), "email")
 	}
 	tx := db.Connect().Begin()
 	_, err = dbRepo.GetAdminInvitationByEmail(tx, email)
 	if err != nil {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
 	// Create admin
 	id := pkg.GenerateUUID()
 	admin := &entity.AdminInvitation{
 		ID:        id,
 		LastName:  lastName,
-		FirstName: firsName,
+		FirstName: firstName,
 		Email:     email,
 	}
 	admin, err = dbRepo.CreateAdminInvation(tx, admin)
 	if err != nil {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
+	Send02RegisterExistingEmailAddress(email)
 	tx.Commit()
-	return nil
+	return admin, nil
 }
 
-func SignupInformation(email string, password string, repeatPassword string) error {
+func SignupInformation(email string, password string, repeatPassword string) (*entity.Admin, error) {
 	// trim data before validation
 	email = strings.TrimSpace(email)
 
 	// validate email format
 	_, err := mail.ParseAddress(email)
 	if err != nil {
-		return pkg.NewError(fmt.Sprintf(pkg.MsgErrInvalid, "Error"), "email")
+		return nil, pkg.NewError(fmt.Sprintf(pkg.MsgErrInvalid, "Error"), "email")
 	}
 
 	err = validatePassword(password, repeatPassword)
 	if err != nil {
-		return err
+		return nil, err
 	}
 	tx := db.Connect().Begin()
 	_, err = dbRepo.GetAdminByEmail(tx, email)
 	if err != nil && err != gorm.ErrRecordNotFound {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
-	if err == nil {
+	if err != nil {
 		tx.Rollback()
-		return pkg.NewError(fmt.Sprintf(pkg.MsgErrAlreadyExists, email), "email")
+		Send03RegisterInformation(email)
+		return nil, pkg.NewError(fmt.Sprintf(pkg.MsgErrAlreadyExists, email), "email")
 	}
 
 	invitation, err := dbRepo.GetAdminInvitationByEmails(tx, email)
 	if err != nil {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
 
 	// Create admin
@@ -98,17 +100,17 @@ func SignupInformation(email string, password string, repeatPassword string) err
 	admin, err = dbRepo.CreateAdmin(tx, admin)
 	if err != nil {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
 
 	err = dbRepo.DeleteAdminInvitationByEmail(tx, invitation.Email)
 	if err != nil {
 		tx.Rollback()
-		return err
+		return nil, err
 	}
 
 	tx.Commit()
-	return nil
+	return admin, nil
 
 }
 func LoginAdminByEmailPassword(email string, password string) (*entity.Session, error) {
@@ -127,6 +129,7 @@ func LoginAdminByEmailPassword(email string, password string) (*entity.Session, 
 
 	session := &entity.Session{
 		UserID: &admin.ID,
+		Email:  admin.Email,
 		Type:   entity.SessionTypeAdmin,
 	}
 

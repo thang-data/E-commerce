@@ -9,6 +9,14 @@ import (
 
 var env *ENV
 
+type FrontendUrls struct {
+	FrontendLoginUrl          string
+	FrontendForgotPasswordUrl string
+}
+type Urls struct { // other urls
+	PublicLogoUrl string
+}
+
 type ENV struct {
 	// Mode
 	ApiMode                     bool
@@ -19,6 +27,8 @@ type ENV struct {
 	APIPort       string
 	BackendApiUrl string
 	FrontendUrl   string
+	FrontendUrls
+	Urls
 
 	// DB
 	DBDriver           string
@@ -35,6 +45,22 @@ type ENV struct {
 
 	// Log
 	LogLevel string
+
+	// Email
+	SMTPHost          string
+	SMTPPort          string
+	SMTPUsername      string
+	SMTPPassword      string
+	SMTPDisplayName   string
+	SMTPSenderAddress string
+
+	SendGridSenderName    string
+	SendGridSenderAddress string
+	SendGridApiKey        string
+
+	// Admin
+	InitialAdminEmail    string
+	InitialAdminPassword string
 }
 
 const (
@@ -61,6 +87,19 @@ const (
 	DBNameReadonly     = "DB_NAME_READONLY"
 
 	LogLevel = "LOG_LEVEL"
+
+	SMTPHost          = "SMTP_HOST"
+	SMTPPort          = "SMTP_PORT"
+	SMTPUsername      = "SMTP_USERNAME"
+	SMTPPassword      = "SMTP_PASSWORD"
+	SMTPDisplayName   = "SMTP_DISPLAY_NAME"
+	SMTPSenderAddress = "SMTP_SENDER_ADDRESS"
+
+	SendGridSenderName    = "SENDGRID_SENDER_NAME"
+	SendGridSenderAddress = "SENDGRID_SENDER_ADDRESS"
+	SendGridApiKey        = "SENDGRID_API_KEY"
+	InitialAdminEmail     = "INITIAL_ADMIN_EMAIL"
+	InitialAdminPassword  = "INITIAL_ADMIN_PASSWORD"
 )
 
 func FetchEnvironmentVarialble() {
@@ -70,17 +109,28 @@ func FetchEnvironmentVarialble() {
 		BackendApiUrl: os.Getenv(BackendApiUrl),
 		FrontendUrl:   os.Getenv(FrontendUrl),
 
-		DBDriver:           "postgres",
-		DBHost:             os.Getenv(DBHost),
-		DBPort:             os.Getenv(DBPort),
-		DBUser:             os.Getenv(DBUser),
-		DBPassword:         os.Getenv(DBPassword),
-		DBName:             os.Getenv(DBName),
-		DBHostReadonly:     os.Getenv(DBHostReadonly),
-		DBPortReadonly:     os.Getenv(DBPortReadonly),
-		DBUserReadonly:     os.Getenv(DBUserReadonly),
-		DBPasswordReadonly: os.Getenv(DBPasswordReadonly),
-		DBNameReadonly:     os.Getenv(DBNameReadonly),
+		DBDriver:              "postgres",
+		DBHost:                os.Getenv(DBHost),
+		DBPort:                os.Getenv(DBPort),
+		DBUser:                os.Getenv(DBUser),
+		DBPassword:            os.Getenv(DBPassword),
+		DBName:                os.Getenv(DBName),
+		DBHostReadonly:        os.Getenv(DBHostReadonly),
+		DBPortReadonly:        os.Getenv(DBPortReadonly),
+		DBUserReadonly:        os.Getenv(DBUserReadonly),
+		DBPasswordReadonly:    os.Getenv(DBPasswordReadonly),
+		DBNameReadonly:        os.Getenv(DBNameReadonly),
+		SMTPHost:              os.Getenv(SMTPHost),
+		SMTPPort:              os.Getenv(SMTPPort),
+		SMTPUsername:          os.Getenv(SMTPUsername),
+		SMTPPassword:          os.Getenv(SMTPPassword),
+		SMTPDisplayName:       os.Getenv(SMTPDisplayName),
+		SMTPSenderAddress:     os.Getenv(SMTPSenderAddress),
+		SendGridSenderName:    os.Getenv(SendGridSenderName),
+		SendGridSenderAddress: os.Getenv(SendGridSenderAddress),
+		SendGridApiKey:        os.Getenv(SendGridApiKey),
+		InitialAdminEmail:     os.Getenv(InitialAdminEmail),
+		InitialAdminPassword:  os.Getenv(InitialAdminPassword),
 
 		LogLevel: os.Getenv(LogLevel),
 	}
@@ -95,6 +145,10 @@ func FetchEnvironmentVarialble() {
 	// Format URLs
 	env.BackendApiUrl = formatUrl(env.BackendApiUrl)
 	env.FrontendUrl = formatUrl(env.FrontendUrl)
+
+	env.FrontendLoginUrl = env.FrontendUrl + "/login"
+	env.FrontendForgotPasswordUrl = env.FrontendUrl + "/signup"
+	env.PublicLogoUrl = env.BackendApiUrl + "/files/public/logo.png"
 
 	if apiMode == false && batchMode == false { // default without ENV
 		logrus.Info("apiMode = false & batchMode = false FROM ENV => default will be all mode (API and Batch)")

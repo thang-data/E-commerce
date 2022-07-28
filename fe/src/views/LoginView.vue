@@ -1,68 +1,58 @@
 <template>
   	<div class="form-container sign-in-container">
-		<form action="#">
+		<form>
 			<h1>Sign in</h1>
 			<span>or use your account</span>
-			<input  name="email" type="email" placeholder="Email" />
-			<input  name="password" type="password" placeholder="Password" />
+			<input v-model="email" name="email" type="email" placeholder="Email" />
+			<input v-model="password" name="password" type="password" placeholder="Password" />
 			<a href="#">Forgot your password?</a>
-			<button>Sign In</button>
+			<button @Click="submit" disable=!enableButton>Sign In</button>
+			<a href="/signup-member">Have you registered as a member yet?</a>
 		</form>
 	</div>
-  <ContainerView :signUp="false" />
+  <ContainerView :signUp="false" />	
 
 </template>
 
-<script lang="ts">
+<script lang="ts" setup>
 import ContainerView from "../components/containerView.vue";
-import { defineComponent } from "vue";
-import { useRouter } from "vue-router";
+import {  ref } from "vue";
+import { useRoute, useRouter } from "vue-router";
 import { useForm } from "vee-validate";
-import { storage } from "@/lib/storage";
 import RepositoryFactory from "@/lib/https/repositoryFactory";
 import AuthRepository from "@/lib/https/authRepository";
-import useFormHandler from "@/lib/compositional-logic/useFormHandler";
+import { computed } from "@vue/reactivity";
+import { isEmptyObject } from "@/lib/utils/common";
 
-export default defineComponent({
-  name: "LoginView",
-  components: {ContainerView},
-  setup() {
-	const router = useRouter();
-	const { loginByEmail } =
-      RepositoryFactory.getRepository<AuthRepository>(AuthRepository);
-	const form = useForm({
-      initialValues: {
-        email: "",
-        password: "",
-      },
-    });
-    const { formHandle } = useFormHandler(form, loginByEmail);
-	const submit = async function () {
-		const response = await formHandle().catch((e) => {
-        form.setErrors({
-          email: e.data.message,
-        });
-      });
+const email = ref("")
+const password = ref("")
+const { errors } = useForm()
+const {  login } = RepositoryFactory.getRepository<AuthRepository>(AuthRepository).withRouter(useRouter())
 
-	   if (response) {
-		if (response.is2FARequired) {
-			const localStorage = storage.getLocalStorage();
-			localStorage.add("userType", response.type);
-
-			 if (response.totp){
-				 router.push("/")
-			 }
-			 else{
-				router.push("/")
-			 }
-		}
-	   }
-	}
-	return {
-      submit,
-    };
+const router = useRouter()
+const enableButton = computed(() => {
+  const enable = true
+  if (email.value.length > 0 && password.value.length > 0 && isEmptyObject(errors.value)) {
+    return enable
   }
-});
+  return false
+})
+
+async function submit() {
+
+  const formData = new FormData()
+  formData.append("email", email.value)
+  formData.append("password", password.value)
+  console.log(formData)
+  try {
+    await login(formData)
+	// router.push({ name: 'dashboard'})
+	console.log(formData)
+  } catch (errors: any) {
+	console.log(errors)
+  }
+}
+
 </script>
 <style lang="scss" scoped>
 
